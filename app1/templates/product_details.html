@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block abc %}
+
+<div class="container py-4">
+    <div class="row">
+        <!-- <div class="col-5"> -->
+        <div class="col-5 ">
+            <img src="{{data.image.url}}" width="250">
+        </div>
+        <div class="col-5">
+            <span>{{data.categoryname}}</span>
+            <h5 class="mb-0">{{data.name}}</h5>
+            <p class="mb-0">{{data.discription}}</p>
+            <div class="price">
+                <span>₹ {{data.price}}</span>
+            </div>
+            <form method="" action="" class="">
+                <div class="mt-3 d-flex justify-content-between align-items-center">
+                    <button class="btn btn-success text-uppercase btn-sm details">Buy Now</button>
+                </div>
+            </form>
+            <br>
+            <form method="post" action="{% url 'cart' %}" class="">
+                {% csrf_token %}
+                <input type="number" name="quantity">
+                <input type="text" name="productid" value={{data.id}} hidden>
+                <button class="btn btn-success text-uppercase btn-sm details">Add to Cart</button>
+
+            </form> 
+
+        </div>
+        <!-- </div> -->
+    </div>
+</div>
+{% if m %}
+<script>alert("{{m}} ")</script>    
+{% endif %}
+{% endblock %}

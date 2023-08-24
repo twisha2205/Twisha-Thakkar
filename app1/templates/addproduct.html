@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+
+{% block  abc %}
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Select Product Category</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="category">
+      {% for i in data %}
+      <option value={{i.id}}>{{i.categoryname}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Product Name</label>
+    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Enter Product Name">
+  </div>
+  <br>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Product price</label>
+    <input type="number" name="price" class="form-control" id="exampleFormControlInput1" placeholder="Enter Product Price">
+  </div>
+  <br>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Product Quantity</label>
+    <input type="number" name="quantity" class="form-control" id="exampleFormControlInput1" placeholder="Enter Product Quantity">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Product image</label>
+    <input type="file" class="form-control-file" name="img" id="exampleFormControlFile1">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">product Description</label>
+    <textarea class="form-control" name="desc" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <br>
+
+  <button type="submit" class="btn btn-dark">Upload</button>
+</form>
+              
+                
+{% endblock  %}
